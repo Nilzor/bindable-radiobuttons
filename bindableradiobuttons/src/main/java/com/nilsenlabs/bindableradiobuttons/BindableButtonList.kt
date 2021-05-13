@@ -2,6 +2,7 @@ package com.nilsenlabs.bindableradiobuttons
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
@@ -50,7 +51,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     }
 
     private fun reinflateViews() {
-        clear()
+        removeAllViews()
         val inflater = LayoutInflater.from(context)
         buttonViewId?.let { viewId ->
             for (buttonVm in buttons ?: emptyList()) {
@@ -62,17 +63,6 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
                 this.addView(buttonView)
             }
         }
-    }
-
-    private fun clear() {
-        // todo check for mem leak
-        /*
-        for (view in children) {
-            (view as? Button)?.let { button ->
-                button.setOnClickListener(null)
-            }
-        }*/
-        removeAllViews()
     }
 
     override fun onDetachedFromWindow() {
