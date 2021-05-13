@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="BindableButtonList">
+        <attr name="buttons" format="string"/>
+        <attr name="buttonViewId" format="reference"/>
+        <attr name="onButtonClicked" format="string"/>
+    </declare-styleable>
+</resources>

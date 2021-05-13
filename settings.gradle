@@ -1,0 +1,3 @@
+include ':bindableradiobuttons'
+include ':example'
+rootProject.name = "Bindable Radio Buttons"
