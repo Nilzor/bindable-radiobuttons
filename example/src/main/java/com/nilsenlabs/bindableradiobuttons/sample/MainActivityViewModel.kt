@@ -12,7 +12,7 @@ class MainActivityViewModel {
     )
 
     fun onButtonClicked(viewModel: BindableButtonList.ButtonViewModel) {
-        Log.d(TAG, "Button clicked: ${viewModel.title}")
+        Log.d(TAG, "Button clicked: ${viewModel.title.get()}")
     }
 
     val lol: String = "Hai"

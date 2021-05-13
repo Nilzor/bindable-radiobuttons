@@ -7,15 +7,21 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.IntegerRes
-import androidx.annotation.StringRes
 import androidx.databinding.ObservableField
-import androidx.databinding.ObservableList
 
 class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+    @IntegerRes
+    var buttonViewId: Int? = null // todo provide default view?
+        set(value) {
+            field = value
+            reinflateViews()
+        }
 
     init {
-        val q = 1
+        val viewId = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res-auto", "buttonViewId", 0)
+        if (viewId != 0) buttonViewId = viewId
     }
+
     interface ButtonClickListener {
         fun onButtonClicked(buttonViewModel: ButtonViewModel)
     }
@@ -30,13 +36,6 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     }
 
     var buttons: List<ButtonViewModel>? = null
-        set(value) {
-            field = value
-            reinflateViews()
-        }
-
-    @IntegerRes
-    var buttonViewId: Int? = null
         set(value) {
             field = value
             reinflateViews()
@@ -66,6 +65,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     }
 
     private fun clear() {
+        // todo check for mem leak
         /*
         for (view in children) {
             (view as? Button)?.let { button ->
