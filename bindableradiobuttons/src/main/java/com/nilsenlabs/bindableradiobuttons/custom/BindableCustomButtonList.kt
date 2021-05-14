@@ -1,14 +1,11 @@
-package com.nilsenlabs.bindableradiobuttons
+package com.nilsenlabs.bindableradiobuttons.custom
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.LinearLayout
-import androidx.annotation.BinderThread
 import androidx.annotation.StringRes
-import androidx.databinding.ObservableField
-import androidx.databinding.ViewDataBinding
 
 class BindableCustomButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     interface OnDatabindSetup {

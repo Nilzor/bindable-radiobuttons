@@ -5,4 +5,10 @@
         <attr name="buttonViewId" format="reference"/>
         <attr name="onButtonClicked" format="string"/>
     </declare-styleable>
+    <declare-styleable name="BindableRadioButtonList">
+        <attr name="selectedItem" format="string"/>
+
+        <!--<attr name="buttons" format="string"/>-->
+        <attr name="itemViewId" format="reference"/>
+    </declare-styleable>
 </resources>

@@ -24,12 +24,19 @@
             android:textColor="#333"
             android:textSize="16sp" />
 
-        <com.nilsenlabs.bindableradiobuttons.BindableButtonList
+        <com.nilsenlabs.bindableradiobuttons.buttons.BindableButtonList
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:buttonViewId="@layout/my_button"
             app:buttons="@{viewModel.buttons}"
-            app:onButtonClicked="@{viewModel.onButtonClicked}"/>
+            app:onButtonClicked="@{viewModel::onButtonClicked}"/>
+
+        <com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:selectedItem="@{viewModel.selectedRadioButton}"
+            app:buttons="@{viewModel.radioButtons}"
+            />
 
     </LinearLayout>
 </layout>

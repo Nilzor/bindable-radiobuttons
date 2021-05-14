@@ -1,14 +1,14 @@
-package com.nilsenlabs.bindableradiobuttons
+package com.nilsenlabs.bindableradiobuttons.buttons
 
 import android.content.Context
 import android.util.AttributeSet
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.IntegerRes
 import androidx.databinding.ObservableField
+import com.nilsenlabs.bindableradiobuttons.Consts
 
 class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     @IntegerRes
@@ -19,7 +19,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
         }
 
     init {
-        val viewId = attrs.getAttributeResourceValue("http://schemas.android.com/apk/res-auto", "buttonViewId", 0)
+        val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "buttonViewId", 0)
         if (viewId != 0) buttonViewId = viewId
     }
 
