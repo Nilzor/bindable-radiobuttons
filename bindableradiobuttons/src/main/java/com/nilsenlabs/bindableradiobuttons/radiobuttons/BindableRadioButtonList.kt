@@ -27,7 +27,7 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             reinflateViews()
         }
 
-    // Todo: Must this be observable? Is that kosher? Changes do not propagate
+    // Todo: Finn ut hvordan InverseBindingAdapter i RadioGroupBindingAdapter virker, evt TetViewBindingAdapter
     // compare with RadioGroup.getCheckedRadioButtonId
     var selectedItem: TitledElement? = null
     

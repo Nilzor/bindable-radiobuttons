@@ -38,5 +38,28 @@
             app:buttons="@{viewModel.radioButtons}"
             />
 
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checkedButton="@={viewModel.testChecked}"
+        >
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="Bela"
+            android:id="@+id/somebutton"
+            />
+
+        <RadioButton
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="WAwwa"
+            android:id="@+id/other2"
+            />
+
+    </RadioGroup>
+
     </LinearLayout>
+
+
 </layout>
