@@ -26,7 +26,7 @@ class MainActivityViewModel : BaseObservable(
         SimpleTitledElement("Two"),
         SimpleTitledElement("Three")
     )
-    val selectedRadioButton = ObservableField<TitledElement>(radioButtons[1])
+    val selectedRadioButton = ObservableField<TitledElement>()//adioButtons[1])
 
     fun onButtonClicked(viewModel: BindableButtonList.ButtonViewModel) {
         Log.d(TAG, "Button clicked: ${viewModel.title.get()}")
