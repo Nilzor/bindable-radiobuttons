@@ -2,6 +2,7 @@ package com.nilsenlabs.bindableradiobuttons.radiobuttons
 
 import android.content.Context
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.RadioButton
 import android.widget.RadioGroup
@@ -30,6 +31,14 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
     // Todo: Finn ut hvordan InverseBindingAdapter i RadioGroupBindingAdapter virker, evt TetViewBindingAdapter
     // compare with RadioGroup.getCheckedRadioButtonId
     var selectedItem: TitledElement? = null
+        get() {
+            Log.d("zzz", "someone asked for TitledElement")
+            return field
+        }
+        set(value) {
+            Log.d("zzz", "Someone sete value to $value")
+            field = value
+        }
     
     private fun reinflateViews() {
         removeAllViews()
