@@ -10,7 +10,7 @@ interface RadioButtonsViewModel {
     val checkedElement: TitledElement?
 }
 
-class SimpleTitledElement(override val title: String) : TitledElement
+data class SimpleTitledElement(override val title: String) : TitledElement
 
 class SimpleRadioButtonsViewModel(
     override val buttons: List<SimpleTitledElement>,
