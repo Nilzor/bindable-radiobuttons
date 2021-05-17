@@ -22,6 +22,13 @@ class MainActivityViewModel : BaseObservable(
         SimpleTitledElement("Two"),
         SimpleTitledElement("Three")
     )
+
+    val customRadioButtons = listOf(
+        MyRadioButtonViewModel("One"),
+        MyRadioButtonViewModel("Two", true),
+        MyRadioButtonViewModel("Three")
+    )
+
     val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
 
     fun onButtonClicked(viewModel: BindableButtonList.ButtonViewModel) {
