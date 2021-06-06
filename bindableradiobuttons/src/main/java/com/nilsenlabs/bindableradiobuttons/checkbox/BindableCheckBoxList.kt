@@ -1,4 +1,4 @@
-package com.nilsenlabs.bindableradiobuttons.custom
+package com.nilsenlabs.bindableradiobuttons.checkbox
 
 import android.content.Context
 import android.util.AttributeSet

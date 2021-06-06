@@ -1,24 +1,12 @@
 package com.nilsenlabs.bindableradiobuttons.checkbox
 
+import androidx.databinding.ObservableArrayList
 import androidx.databinding.ObservableBoolean
-import androidx.databinding.ObservableField
+import androidx.databinding.ObservableList
 
 
-interface CheckBoxViewModel {
-    val title: ObservableField<String>
-    val isChecked: ObservableBoolean
-}
+open class CheckBoxListViewModel : ObservableList<CheckBoxViewModel> by ObservableArrayList()
 
-class SimpleCheckBoxViewModel(
-    title: String,
-    isChecked: Boolean = false
-) : CheckBoxViewModel {
-
-    override val title: ObservableField<String> = ObservableField("")
-    override val isChecked: ObservableBoolean = ObservableBoolean(false)
-
-    init {
-        this.title.set(title)
-        this.isChecked.set(isChecked)
-    }
+open class CheckBoxViewModel(val text: String, isChecked: Boolean) {
+    val isChecked = ObservableBoolean(isChecked)
 }
