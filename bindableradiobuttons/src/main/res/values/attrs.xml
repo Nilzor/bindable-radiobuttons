@@ -11,4 +11,9 @@
         <!--<attr name="buttons" format="string"/>-->
         <attr name="itemViewId" format="reference"/>
     </declare-styleable>
+
+    <declare-styleable name="BindableCheckBoxList">
+        <!-- todo stylable på itenViewId? -->
+        <attr name="checkboxes" format="string"/>
+    </declare-styleable>
 </resources>

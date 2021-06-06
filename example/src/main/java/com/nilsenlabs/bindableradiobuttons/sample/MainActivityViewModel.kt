@@ -3,8 +3,11 @@ package com.nilsenlabs.bindableradiobuttons.sample
 import android.util.Log
 import androidx.databinding.BaseObservable
 import androidx.databinding.Observable
+import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import com.nilsenlabs.bindableradiobuttons.buttons.BindableButtonList
+import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxListViewModel
+import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.SimpleTitledElement
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.TitledElement
 
@@ -23,6 +26,13 @@ class MainActivityViewModel : BaseObservable(
         SimpleTitledElement("Three")
     )
 
+    val checkBoxViewModel = CheckBoxListViewModel(
+        CheckBoxViewModel("Alpha"),
+        CheckBoxViewModel("Bravo"),
+        CheckBoxViewModel("Charlie", true),
+        CheckBoxViewModel("Delta")
+    )
+
     val customRadioButtons = listOf(
         MyRadioButtonViewModel("One"),
         MyRadioButtonViewModel("Two", true),
@@ -39,6 +49,12 @@ class MainActivityViewModel : BaseObservable(
         selectedRadioButton.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                 Log.d(TAG, "Radio button changed to ${selectedRadioButton.get()}")
+            }
+        })
+
+        checkBoxViewModel.get(0).isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                Log.d(TAG, "Alpha changed: " + (sender as ObservableBoolean).get())
             }
         })
     }

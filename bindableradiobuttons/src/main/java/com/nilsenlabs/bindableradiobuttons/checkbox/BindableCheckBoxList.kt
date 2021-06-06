@@ -17,12 +17,16 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             reinflateViews()
         }
 
+    var checkboxes: CheckBoxListViewModel? = null
+        set(newVal) {
+            field = newVal
+            reinflateViews()
+        }
+
     init {
         val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "itemViewId", 0)
         if (viewId != 0) itemViewId = viewId
     }
-
-    var checkboxes: CheckBoxListViewModel = CheckBoxListViewModel()
 
     override fun onAttachedToWindow() {
         super.onAttachedToWindow()
@@ -35,11 +39,12 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
     private fun reinflateViews() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)
-        for (viewModel in checkboxes) {
+        for (viewModel in checkboxes ?: emptyList()) {
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as CheckBox
             } ?: CheckBox(context)
             view.text = viewModel.text
+            view.isChecked = viewModel.isChecked.get()
             view.tag = viewModel
             view.setOnCheckedChangeListener { clickedView, isChecked ->
                 (clickedView.tag as CheckBoxViewModel).isChecked.set(isChecked)

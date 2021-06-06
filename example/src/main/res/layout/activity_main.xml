@@ -39,6 +39,13 @@
             app:buttons="@{viewModel.radioButtons}"
             />
 
+        <com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:itemViewId="@layout/my_checbox"
+            app:checkboxes="@{viewModel.checkBoxViewModel}"
+            />
+
         <RadioGroup
             android:id="@+id/custom_radiogroup"
             android:layout_width="wrap_content"
