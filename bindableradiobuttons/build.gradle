@@ -46,3 +46,7 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
+
+// Todo. Set up JFrog
+// https://nilzor.jfrog.io/ui/repos/tree/General/default-maven-virtual
+// https://www.jfrog.com/confluence/display/JFROG/Gradle+Artifactory+Plugin
