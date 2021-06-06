@@ -5,18 +5,13 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.Button
 import android.widget.LinearLayout
+import android.widget.RadioGroup
 import androidx.annotation.StringRes
 
-class BindableCustomButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
+class BindableCustomButtonList(context: Context, attrs: AttributeSet) : RadioGroup(context, attrs) {
     interface OnDatabindSetup {
         fun setupDatabinding(button: Button)
     }
-
-    var buttons: List<Any>? = null
-        set(value) {
-            field = value
-            reinflateViews()
-        }
 
     var onDatabindSetup: OnDatabindSetup? = null
 
@@ -26,13 +21,7 @@ class BindableCustomButtonList(context: Context, attrs: AttributeSet) : LinearLa
     private fun reinflateViews() {
         val inflater = LayoutInflater.from(context)
         this.removeAllViews()
-        buttonViewId?.let { viewId ->
-            for (buttonVm in buttons ?: emptyList()) {
-                val buttonView = inflater.inflate(viewId, this, false) as Button
-                onDatabindSetup?.let { }
-                this.addView(buttonView)
-            }
-        }
+
     }
 
     override fun onDetachedFromWindow() {

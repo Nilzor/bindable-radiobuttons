@@ -27,9 +27,13 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             reinflateViews()
         }
 
-    // Todo: Finn ut hvordan InverseBindingAdapter i RadioGroupBindingAdapter virker, evt TetViewBindingAdapter
-    // compare with RadioGroup.getCheckedRadioButtonId
     var selectedItem: TitledElement? = null
+        set(value) {
+            field = value
+            findViewWithTag<RadioButton>(selectedItem)?.let { viewToSelect ->
+                viewToSelect.isChecked = true
+            }
+        }
     
     private fun reinflateViews() {
         removeAllViews()
@@ -40,6 +44,7 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             } ?: RadioButton(context)
             view.text = viewModel.title
             view.tag = viewModel
+            if (viewModel == selectedItem) view.isChecked = true
             view.setOnCheckedChangeListener { buttonView, isChecked -> 
                 if (isChecked) selectedItem = buttonView.tag as TitledElement
             }

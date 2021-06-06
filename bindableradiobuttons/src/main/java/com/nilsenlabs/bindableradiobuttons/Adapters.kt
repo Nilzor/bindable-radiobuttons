@@ -1,5 +1,6 @@
 package com.nilsenlabs.bindableradiobuttons
 
+import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
@@ -7,13 +8,20 @@ import com.nilsenlabs.bindableradiobuttons.radiobuttons.TitledElement
 
 object Adapters {
     //https://developer.android.com/reference/android/databinding/InverseBindingAdapter
-    @InverseBindingAdapter(attribute = "app:selectedItem", event = "android:selectedItemAttrChanged")
-    fun radioButtonGroupTitledElementChanged(brb: BindableRadioButtonList) : TitledElement? {
+    @JvmStatic
+    @InverseBindingAdapter(attribute = "app:selectedItem", event = "app:selectedItemAttrChanged")
+    fun selectedItem(brb: BindableRadioButtonList) : TitledElement? {
         return brb.selectedItem
     }
 
     @JvmStatic
+    @BindingAdapter("app:selectedItemAttrChanged")
     fun setTitledElementChanged(brb: BindableRadioButtonList, ibl: InverseBindingListener?) {
-        //ibl?.onChange()
+        if (ibl != null) {
+            brb.setOnCheckedChangeListener { group, checkedId ->
+                ibl.onChange()
+            }
+        }
+        ibl?.onChange()
     }
 }

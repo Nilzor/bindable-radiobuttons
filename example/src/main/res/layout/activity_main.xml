@@ -34,32 +34,17 @@
         <com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:selectedItem="@{viewModel.selectedRadioButton}"
+            app:itemViewId="@layout/my_radio"
+            app:selectedItem="@={viewModel.selectedRadioButton}"
             app:buttons="@{viewModel.radioButtons}"
             />
 
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:checkedButton="@={viewModel.testChecked}"
+        <RadioGroup
+            android:id="@+id/custom_radiogroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
         >
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="Bela"
-            android:id="@+id/somebutton"
-            />
-
-        <RadioButton
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="WAwwa"
-            android:id="@+id/other2"
-            />
-
-    </RadioGroup>
+        </RadioGroup>
 
     </LinearLayout>
-
-
 </layout>
