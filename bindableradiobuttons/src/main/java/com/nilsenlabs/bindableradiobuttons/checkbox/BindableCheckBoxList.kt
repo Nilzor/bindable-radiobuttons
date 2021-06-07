@@ -49,7 +49,6 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             view.setOnCheckedChangeListener { clickedView, isChecked ->
                 (clickedView.tag as CheckBoxViewModel).isChecked.set(isChecked)
             }
-            // Todo memloead
             viewModel.isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
                 override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                     findViewWithTag<CheckBox>(viewModel)?.isChecked = viewModel.isChecked.get()
