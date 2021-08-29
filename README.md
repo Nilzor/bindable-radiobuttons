@@ -62,7 +62,3 @@ change title or function throughout their lifetime on their screen.
   takes away the simplicity of the library. If you _do_ need to databind e.g. the color of each check box text, 
   first ask yourself if you _really_ do need that, then either build the support from scratch, fork this
   library or make a pull request. 
-  
-   
-# TODO
-- todo: test java support

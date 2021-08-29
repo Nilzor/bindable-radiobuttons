@@ -9,6 +9,9 @@ interface CheckBoxViewModelInterface: TitledElement {
     val isChecked: ObservableBoolean
 }
 
-open class CheckBoxViewModel(override val title: String, isChecked: Boolean = false): CheckBoxViewModelInterface {
+open class CheckBoxViewModel @JvmOverloads constructor(
+    override val title: String,
+    isChecked: Boolean = false
+): CheckBoxViewModelInterface {
     override val isChecked = ObservableBoolean(isChecked)
 }

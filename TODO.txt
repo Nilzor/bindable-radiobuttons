@@ -1,5 +1,0 @@
-https://blog.10pines.com/2018/06/25/publish-artifacts-on-maven-central/
-
-- Skal jeg ha interfaces for viewmodels?
-- Hvor bra funker functional interface fra Java?-
-- Sjekk for memleak for radio buttons . (Ikke tilstede for checkboxs)
