@@ -5,7 +5,8 @@ interface ButtonViewModelInterface {
     val title: String
     val onClick: BindableButtonList.ClickListener?
 }
-class ButtonViewModel(
+
+open class ButtonViewModel(
     override val title: String,
     override val onClick: BindableButtonList.ClickListener? = null
 ) : ButtonViewModelInterface {

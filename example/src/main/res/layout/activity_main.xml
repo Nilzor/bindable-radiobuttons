@@ -59,7 +59,7 @@
                 android:orientation="vertical"
                 android:padding="8dp"
                 app:itemViewId="@layout/my_checbox"
-                app:checkboxes="@{viewModel.checkBoxViewModel}"
+                app:checkboxes="@{viewModel.checkboxes}"
                 />
 
         </androidx.cardview.widget.CardView>
