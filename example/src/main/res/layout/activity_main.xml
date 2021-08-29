@@ -58,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:padding="8dp"
-                app:itemViewId="@layout/my_checbox"
+                app:itemViewId="@{viewModel.checkBoxButtonView}"
                 app:checkboxes="@{viewModel.checkboxes}"
                 />
 

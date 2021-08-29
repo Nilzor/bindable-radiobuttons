@@ -1,10 +1,8 @@
 package com.nilsenlabs.bindableradiobuttons.sample
 
 import android.util.Log
-import androidx.databinding.BaseObservable
-import androidx.databinding.Observable
-import androidx.databinding.ObservableBoolean
-import androidx.databinding.ObservableField
+import androidx.databinding.*
+import com.nilsenlabs.bindableradiobuttons.R
 import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
@@ -18,7 +16,8 @@ class MainActivityViewModel : BaseObservable() {
 
     val buttons = listOf(
         ButtonViewModel("Invert check", this::invertCheckboxes),
-        ButtonViewModel("Next radio", this::selectNextRadioButton)
+        ButtonViewModel("Next radio", this::selectNextRadioButton),
+        ButtonViewModel("Toggle checkbox type", this::toggleCheckBoxType)
     )
 
     val radioButtons = listOf(
@@ -33,6 +32,8 @@ class MainActivityViewModel : BaseObservable() {
         CheckBoxViewModel("Charlie", true),
         CheckBoxViewModel("Delta")
     )
+
+    val checkBoxButtonView = ObservableInt(R.layout.my_checkbox)
 
     val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
 
@@ -60,16 +61,24 @@ class MainActivityViewModel : BaseObservable() {
         })
     }
 
-    fun invertCheckboxes() {
+    private fun invertCheckboxes() {
         for (checkbox in checkboxes) {
             checkbox.isChecked.set(!checkbox.isChecked.get())
         }
     }
 
-    fun selectNextRadioButton() {
+    private fun selectNextRadioButton() {
         selectedRadioButton.get()?.let {
             val toSelect = (radioButtons.indexOf(it) + 1) % radioButtons.size
             selectedRadioButton.set(radioButtons.get(toSelect))
+        }
+    }
+
+    private fun toggleCheckBoxType() {
+        if (checkBoxButtonView.get() == R.layout.my_togglebutton) {
+            checkBoxButtonView.set(R.layout.my_checkbox)
+        } else {
+            checkBoxButtonView.set(R.layout.my_togglebutton)
         }
     }
 }

@@ -1,4 +1,4 @@
-# Bindable Buttons, Radio Buttons and Checkboxes
+# Bindable Buttons, Radio Buttons, ToggleButtons and Checkboxes  
 
 Android databinding is an awesome tool that enabels a clean MVVM architecture. However lacking from
 the core SDK is support for bound lists of buttons, radio buttons and checkboxes. These are pretty
@@ -37,15 +37,14 @@ Example: See `activity_main.xml` and `MainActivityViewModel` // todo insert refe
     The field must be of type `TitledElement`, or `ObservableField<TitledElement>` if you want to listen 
     to or notify of changes to the checked states.
    
-## Checkboxes
+## CheckBoxes / ToggleButtons
 
 - Expose a list of `CheckBoxViewModel` objects in your ViewModel
-- Define a layout file that has one and only one `<CheckBox>` element.
+- Define a layout file that has one and only one `<CheckBox>` or `<ToggleButton>` element.
 - Add a `BindableCheckBoxList` to your view and wire up:
   - A reference to your view through the `app:itemViewId` property 
   - A reference to your checkbox list through the `app:checkboxes` property
   - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
-
 
 # This library is opinionated
 
