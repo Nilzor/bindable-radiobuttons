@@ -1,7 +1,6 @@
 package com.nilsenlabs.bindableradiobuttons.radiobuttons
 
-interface TitledElement {
-    val title: String
-}
+import com.nilsenlabs.bindableradiobuttons.TitledElement
 
-data class SimpleTitledElement(override val title: String) : TitledElement
+
+data class RadioButtonViewModel(override val title: String) : TitledElement

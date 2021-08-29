@@ -4,7 +4,6 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
-import com.nilsenlabs.bindableradiobuttons.radiobuttons.TitledElement
 
 object Adapters {
     //https://developer.android.com/reference/android/databinding/InverseBindingAdapter

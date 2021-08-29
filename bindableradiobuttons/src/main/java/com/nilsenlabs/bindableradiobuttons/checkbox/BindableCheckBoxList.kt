@@ -33,7 +33,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
     }
 
     override fun addOnAttachStateChangeListener(listener: OnAttachStateChangeListener?) {
-        // memleak here?
+        // todo memleak here?
     }
 
     private fun reinflateViews() {
@@ -43,7 +43,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as CheckBox
             } ?: CheckBox(context)
-            view.text = viewModel.text
+            view.text = viewModel.title
             view.isChecked = viewModel.isChecked.get()
             view.tag = viewModel
             view.setOnCheckedChangeListener { clickedView, isChecked ->

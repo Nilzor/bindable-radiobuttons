@@ -5,11 +5,11 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Observable
 import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
+import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxListViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
-import com.nilsenlabs.bindableradiobuttons.radiobuttons.SimpleTitledElement
-import com.nilsenlabs.bindableradiobuttons.radiobuttons.TitledElement
+import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 
 class MainActivityViewModel : BaseObservable(
 
@@ -21,9 +21,9 @@ class MainActivityViewModel : BaseObservable(
     )
 
     val radioButtons = listOf(
-        SimpleTitledElement("One"),
-        SimpleTitledElement("Two"),
-        SimpleTitledElement("Three")
+        RadioButtonViewModel("One"),
+        RadioButtonViewModel("Two"),
+        RadioButtonViewModel("Three")
     )
 
     val checkBoxViewModel = CheckBoxListViewModel(

@@ -7,6 +7,7 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.IntegerRes
 import com.nilsenlabs.bindableradiobuttons.Consts
+import com.nilsenlabs.bindableradiobuttons.TitledElement
 
 class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGroup(context, attrs) {
     @IntegerRes
