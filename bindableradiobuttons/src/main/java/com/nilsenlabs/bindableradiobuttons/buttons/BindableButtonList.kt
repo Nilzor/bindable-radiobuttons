@@ -7,7 +7,6 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import androidx.annotation.IntegerRes
-import androidx.databinding.ObservableField
 import com.nilsenlabs.bindableradiobuttons.Consts
 
 class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
@@ -23,17 +22,12 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
         if (viewId != 0) buttonViewId = viewId
     }
 
-    interface ButtonClickListener {
+    fun interface ButtonClickListener {
         fun onButtonClicked(buttonViewModel: ButtonViewModel)
     }
 
-    interface ClickListener {
+    fun interface ClickListener {
         fun onClicked()
-    }
-
-    interface ButtonViewModel {
-        var title: ObservableField<String>
-        var onClick: ClickListener?
     }
 
     var buttons: List<ButtonViewModel>? = null

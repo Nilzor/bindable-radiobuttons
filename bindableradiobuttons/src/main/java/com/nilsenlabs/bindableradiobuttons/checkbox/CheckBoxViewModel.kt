@@ -7,7 +7,7 @@ import androidx.databinding.ObservableList
 
 open class CheckBoxListViewModel() : ObservableList<CheckBoxViewModel> by ObservableArrayList() {
     constructor(vararg checkBoxes: CheckBoxViewModel) : this() {
-        for (elem in checkBoxes) add(elem)
+        addAll(checkBoxes)
     }
 }
 
