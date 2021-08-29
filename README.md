@@ -27,7 +27,7 @@ allprojects {
 2. In your application module
 
 ```
-implementation 'com.github.nilzor:bindable-radiobuttons:0.9.0'
+implementation 'com.github.nilzor:bindable-radiobuttons:1.0.0'
 ```
 
 # Usage
