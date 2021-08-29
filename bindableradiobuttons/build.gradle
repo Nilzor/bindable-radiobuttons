@@ -2,11 +2,12 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
+    id 'maven-publish'
 }
 
 android {
     compileSdkVersion 30
-    buildToolsVersion "30.0.2"
+    buildToolsVersion "30.0.3"
 
     buildFeatures {
         dataBinding true
@@ -47,3 +48,15 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 }
 
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
+                groupId = 'com.nilsenlabs'
+                artifactId = 'bindableradiobuttons'
+                version = '0.9.0'
+            }
+        }
+    }
+}

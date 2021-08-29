@@ -9,7 +9,26 @@ library to aid in that.
 
 # Implementation
 
-Add a jitpack reference to your project using... // todo complete example 
+Add a jitpack reference to your project.
+
+1. In your root `build.gradle`
+
+Add reference to the jitpack.io repoistory if you haven't got one already
+
+```
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
+```
+
+2. In your application module
+
+```
+implementation 'com.github.nilzor:bindable-radiobuttons:0.9.0'
+```
 
 # Usage
 
@@ -24,7 +43,7 @@ Add a jitpack reference to your project using... // todo complete example
     the most common approach would probably be wiring individual click listeners using the `onClick`
     event of the individual `ButtonViewModel`-classes.
     
-Example: See `activity_main.xml` and `MainActivityViewModel` // todo insert reference
+Example: See [activity_main.xml](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/res/layout/activity_main.xml#L21-L28) and [MainActivityViewModel](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/java/com/nilsenlabs/bindableradiobuttons/sample/MainActivityViewModel.kt#L16-L20) 
  
 (1) If you don't want to use the provided `ButtonViewModel`, you can create your own button ViewModel extending `ButtonViewModelInterface`.
  Same goes for `CheckboxViewModelInterface` for CheckBox and `TitledElement` for RadioButton. 
