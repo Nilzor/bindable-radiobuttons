@@ -2,7 +2,6 @@ package com.nilsenlabs.bindableradiobuttons.sample
 
 import android.util.Log
 import androidx.databinding.*
-import com.nilsenlabs.bindableradiobuttons.R
 import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
@@ -11,7 +10,7 @@ import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 
 class MainActivityViewModel : BaseObservable() {
     companion object {
-        val TAG = "VM"
+        const val TAG = "VM"
     }
 
     val buttons = listOf(

@@ -2,7 +2,7 @@ package com.nilsenlabs.bindableradiobuttons.sample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.nilsenlabs.bindableradiobuttons.databinding.ActivityMainBinding
+import com.nilsenlabs.bindableradiobuttons.sample.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
