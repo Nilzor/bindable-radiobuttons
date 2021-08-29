@@ -39,15 +39,28 @@ Example: See `activity_main.xml` and `MainActivityViewModel` // todo insert refe
    
 ## Checkboxes
 
-- Expose a `CheckBoxListViewModel` that contains a list of `CheckBoxViewModel` objects in your ViewModel
+- Expose a list of `CheckBoxViewModel` objects in your ViewModel
 - Define a layout file that has one and only one `<CheckBox>` element.
 - Add a `BindableCheckBoxList` to your view and wire up:
   - A reference to your view through the `app:itemViewId` property 
   - A reference to your checkbox list through the `app:checkboxes` property
   - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
+
+
+# This library is opinionated
+
+- It does not support a mutating list in the sense that individual additions or removal of elements
+  take effect. If you need to apply changes to the list, rebind the entire list. 
+  
+- It does not allow the text of the buttons to change dyanamically. Most buttons should not
+change title or function throughout their lifetime on their screen.
+  
+- It does not allow you to databind individual properties of the views other than click listeners and text.
+  This would require a different approach or at least a custom binding interface that 
+  takes away the simplicity of the library. If you _do_ need to databind e.g. the color of each check box text, 
+  first ask yourself if you _really_ do need that, then either build the support from scratch, fork this
+  library or make a pull request. 
+  
    
-   
-# Runtime state change support
-- todo: CheckBoxes shouldn't be an ObservableList - we don't listen to changes
-- todo: Check box list changes? Button? RadioButotn? Title of elements
-- todo: java support?
+# TODO
+- todo: test java support

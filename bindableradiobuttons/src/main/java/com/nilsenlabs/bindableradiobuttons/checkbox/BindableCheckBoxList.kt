@@ -17,7 +17,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             reinflateViews()
         }
 
-    var checkboxes: CheckBoxListViewModel? = null
+    var checkboxes: List<CheckBoxViewModel>? = null
         set(newVal) {
             field = newVal
             reinflateViews()
