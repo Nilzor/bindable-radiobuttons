@@ -26,7 +26,8 @@ Add a jitpack reference to your project using... // todo complete example
     
 Example: See `activity_main.xml` and `MainActivityViewModel` // todo insert reference
  
-(1) If you don't want to use the provided `ButtonViewModel`, you can create your own button ViewModel extending `ButtonViewModelInterface` 
+(1) If you don't want to use the provided `ButtonViewModel`, you can create your own button ViewModel extending `ButtonViewModelInterface`.
+ Same goes for `CheckboxViewModelInterface` for CheckBox and `TitledElement` for RadioButton. 
 
 ## Radio Buttons
 
