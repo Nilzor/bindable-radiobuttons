@@ -11,7 +11,7 @@ import com.nilsenlabs.bindableradiobuttons.Consts
 
 class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
     @IntegerRes
-    var buttonViewId: Int? = null // todo provide default view?
+    var buttonViewId: Int? = null
         set(value) {
             field = value
             reinflateViews()
@@ -50,10 +50,9 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
         buttonViewId?.let { viewId ->
             for (buttonVm in buttons ?: emptyList()) {
                 val buttonView = inflater.inflate(viewId, this, false) as Button
-                buttonView.text = buttonVm.title.get()
+                buttonView.text = buttonVm.title
                 buttonView.tag = buttonVm
                 buttonView.setOnClickListener(::onClick)
-                // todo observe text change and list change of buttons if
                 this.addView(buttonView)
             }
         }

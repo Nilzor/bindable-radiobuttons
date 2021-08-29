@@ -14,10 +14,10 @@ import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 class MainActivityViewModel : BaseObservable(
 
 ) {
-    val buttons = listOf<MyButtonViewModel>(
-        MyButtonViewModel("Invert", this::invertCheckboxes),
-        MyButtonViewModel("Clear"),
-        MyButtonViewModel("Next", this::nextRadioButton),
+    val buttons = listOf(
+        ButtonViewModel("Invert", this::invertCheckboxes),
+        ButtonViewModel("Clear"),
+        ButtonViewModel("Next", this::nextRadioButton),
     )
 
     val radioButtons = listOf(
@@ -34,9 +34,9 @@ class MainActivityViewModel : BaseObservable(
     )
 
     val customRadioButtons = listOf(
-        MyRadioButtonViewModel("One"),
-        MyRadioButtonViewModel("Two", true),
-        MyRadioButtonViewModel("Three")
+        RadioButtonViewModel("One"),
+        RadioButtonViewModel("Two"),
+        RadioButtonViewModel("Three")
     )
 
     val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
@@ -55,7 +55,7 @@ class MainActivityViewModel : BaseObservable(
     }
 
     fun onButtonClicked(viewModel: ButtonViewModel) {
-        Log.d(TAG, "Button clicked: ${viewModel.title.get()}")
+        Log.d(TAG, "Button clicked: ${viewModel.title}")
     }
 
     init {

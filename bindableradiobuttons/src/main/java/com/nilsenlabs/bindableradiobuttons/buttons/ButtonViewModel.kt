@@ -1,9 +1,13 @@
 package com.nilsenlabs.bindableradiobuttons.buttons
 
-import androidx.databinding.ObservableField
 
-interface ButtonViewModel {
-    // todo does this need to be observable
-    var title: ObservableField<String>
-    var onClick: BindableButtonList.ClickListener?
+interface ButtonViewModelInterface {
+    val title: String
+    val onClick: BindableButtonList.ClickListener?
+}
+class ButtonViewModel(
+    override val title: String,
+    override val onClick: BindableButtonList.ClickListener? = null
+) : ButtonViewModelInterface {
+    override fun toString() = title
 }
