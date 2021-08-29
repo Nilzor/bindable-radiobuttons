@@ -28,14 +28,6 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
         if (viewId != 0) itemViewId = viewId
     }
 
-    override fun onAttachedToWindow() {
-        super.onAttachedToWindow()
-    }
-
-    override fun addOnAttachStateChangeListener(listener: OnAttachStateChangeListener?) {
-        // todo memleak here?
-    }
-
     private fun reinflateViews() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)
@@ -43,12 +35,14 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as CheckBox
             } ?: CheckBox(context)
+            // Set bound properties
             view.text = viewModel.title
             view.isChecked = viewModel.isChecked.get()
             view.tag = viewModel
             view.setOnCheckedChangeListener { clickedView, isChecked ->
                 (clickedView.tag as CheckBoxViewModel).isChecked.set(isChecked)
             }
+            // Support two way databinding
             viewModel.isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
                 override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
                     findViewWithTag<CheckBox>(viewModel)?.isChecked = viewModel.isChecked.get()

@@ -43,9 +43,11 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as RadioButton
             } ?: RadioButton(context)
+            // Set initial bound properties
             view.text = viewModel.title
             view.tag = viewModel
             if (viewModel == selectedItem) view.isChecked = true
+            // Support two-way databinding
             view.setOnCheckedChangeListener { buttonView, isChecked -> 
                 if (isChecked) selectedItem = buttonView.tag as TitledElement
             }

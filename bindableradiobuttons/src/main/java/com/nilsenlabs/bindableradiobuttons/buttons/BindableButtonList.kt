@@ -36,6 +36,10 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
             reinflateViews()
         }
 
+    /**
+     * Event fired when any of the buttons in the list is clicked.
+     * The ViewModel of the clicked button is passed as parameter to the event.
+     */
     var onButtonClicked: ButtonClickListener? = null
 
     private fun onClick(view: View) {
@@ -56,9 +60,5 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
                 this.addView(buttonView)
             }
         }
-    }
-
-    override fun onDetachedFromWindow() {
-        super.onDetachedFromWindow()
     }
 }
