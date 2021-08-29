@@ -17,7 +17,7 @@ object Adapters {
     @BindingAdapter("app:selectedItemAttrChanged")
     fun setTitledElementChanged(brb: BindableRadioButtonList, ibl: InverseBindingListener?) {
         if (ibl != null) {
-            brb.setOnCheckedChangeListener { group, checkedId ->
+            brb.setOnCheckedChangeListener { _, _ ->
                 ibl.onChange()
             }
         }
