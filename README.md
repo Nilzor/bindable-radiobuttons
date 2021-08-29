@@ -5,6 +5,8 @@ the core SDK is support for bound lists of buttons, radio buttons and checkboxes
 normal use cases that I encounter in almost every app I develop. Therefore I have published this
 library to aid in that.
 
+![image](https://user-images.githubusercontent.com/990654/131252314-5f5b80a8-d3ba-48a4-b2c0-206b62ad377a.png)
+
 # Implementation
 
 Add a jitpack reference to your project using... // todo complete example 
