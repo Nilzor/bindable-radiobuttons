@@ -7,17 +7,18 @@ import androidx.databinding.ObservableBoolean
 import androidx.databinding.ObservableField
 import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
+import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxListViewModel
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
-import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 
-class MainActivityViewModel : BaseObservable(
+class MainActivityViewModel : BaseObservable() {
+    companion object {
+        val TAG = "VM"
+    }
 
-) {
     val buttons = listOf(
-        ButtonViewModel("Invert", this::invertCheckboxes),
-        ButtonViewModel("Clear"),
-        ButtonViewModel("Next", this::nextRadioButton),
+        ButtonViewModel("Invert check", this::invertCheckboxes),
+        ButtonViewModel("Next radio", this::selectNextRadioButton),
     )
 
     val radioButtons = listOf(
@@ -33,13 +34,31 @@ class MainActivityViewModel : BaseObservable(
         CheckBoxViewModel("Delta")
     )
 
-    val customRadioButtons = listOf(
-        RadioButtonViewModel("One"),
-        RadioButtonViewModel("Two"),
-        RadioButtonViewModel("Three")
-    )
-
     val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
+
+    fun onButtonClicked(viewModel: ButtonViewModel) {
+        Log.d(TAG, "Button clicked: ${viewModel.title}")
+    }
+
+    init {
+        listenForChanges()
+    }
+
+    private fun listenForChanges() {
+        // Example illustrating how we can listen for changes in radio button changed
+        selectedRadioButton.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                Log.d(TAG, "Radio button changed to ${selectedRadioButton.get()}")
+            }
+        })
+
+        // Example illustrating how we can listen for changes in checked state on the check boxes
+        checkBoxViewModel.get(0).isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
+            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
+                Log.d(TAG, "Checkbox 'One' changed state to checked? " + (sender as ObservableBoolean).get())
+            }
+        })
+    }
 
     fun invertCheckboxes() {
         for (checkbox in checkBoxViewModel) {
@@ -47,32 +66,10 @@ class MainActivityViewModel : BaseObservable(
         }
     }
 
-    fun nextRadioButton() {
+    fun selectNextRadioButton() {
         selectedRadioButton.get()?.let {
             val toSelect = (radioButtons.indexOf(it) + 1) % radioButtons.size
             selectedRadioButton.set(radioButtons.get(toSelect))
         }
-    }
-
-    fun onButtonClicked(viewModel: ButtonViewModel) {
-        Log.d(TAG, "Button clicked: ${viewModel.title}")
-    }
-
-    init {
-        selectedRadioButton.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                Log.d(TAG, "Radio button changed to ${selectedRadioButton.get()}")
-            }
-        })
-
-        checkBoxViewModel.get(0).isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
-            override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                Log.d(TAG, "Alpha changed: " + (sender as ObservableBoolean).get())
-            }
-        })
-    }
-
-    companion object {
-        val TAG = "VM"
     }
 }
