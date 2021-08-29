@@ -48,5 +48,6 @@ Example: See `activity_main.xml` and `MainActivityViewModel` // todo insert refe
    
    
 # Runtime state change support
+- todo: CheckBoxes shouldn't be an ObservableList - we don't listen to changes
 - todo: Check box list changes? Button? RadioButotn? Title of elements
 - todo: java support?
