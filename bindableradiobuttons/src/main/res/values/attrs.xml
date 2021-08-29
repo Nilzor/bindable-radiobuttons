@@ -7,13 +7,12 @@
     </declare-styleable>
     <declare-styleable name="BindableRadioButtonList">
         <attr name="selectedItem" format="string"/>
-
-        <!--<attr name="buttons" format="string"/>-->
+        <attr name="buttons"/>
         <attr name="itemViewId" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="BindableCheckBoxList">
-        <!-- todo stylable på itenViewId? -->
+        <attr name="itemViewId"/>
         <attr name="checkboxes" format="string"/>
     </declare-styleable>
 </resources>
