@@ -5,7 +5,7 @@ the core SDK is support for bound lists of buttons, radio buttons and checkboxes
 normal use cases that I encounter in almost every app I develop. Therefore I have published this
 library to aid in that.
 
-![image](https://user-images.githubusercontent.com/990654/131252314-5f5b80a8-d3ba-48a4-b2c0-206b62ad377a.png)
+![image](https://user-images.githubusercontent.com/990654/131549042-cb7b6fdb-c45e-4a21-9ddc-9c42c9742c1f.png)
 
 # Implementation
 
@@ -35,31 +35,28 @@ implementation 'com.github.nilzor:bindable-radiobuttons:1.0.0'
 ## Radio Buttons
 
 - Expose a list of `RadioButtonViewModel` objects in your ViewModel 
-- Define a layout file that has one and only one `<RadioButton>` element.
 - Add a `BindableRadioButtonList` to your view and wire up:
   - A reference to your button list through the `app:buttons` property
-  - (Optional) A reference to your view through the `app:itemViewId` property in order to customize the look of the buttons 
-  - (Optional) A one- or two-way binding to a viewmodel-property using the `app:selectedItem` property. 
+  - (Optionally) Reference a custom view through the `app:itemViewId` property. The layout XML file must contain a single `<RadioButton>` view element
+  - (Optionally) A one- or two-way binding to a viewmodel-property using the `app:selectedItem` property. 
     The field must be of type `TitledElement`, or `ObservableField<TitledElement>` if you want to listen 
     to or notify of changes to the checked states.
 
-## CheckBoxes / ToggleButtons
+## CheckBoxes / ToggleButtons / Switch / SwitchCompat
 
 - Expose a list of `CheckBoxViewModel` objects in your ViewModel
-- Define a layout file that has one and only one `<CheckBox>` or `<ToggleButton>` element.
 - Add a `BindableCheckBoxList` to your view and wire up:
   - A reference to your checkbox list through the `app:checkboxes` property
-  - (Optional) A reference to your view through the `app:itemViewId` property in order to customize the look of the check boxes
+  - (Optional) A reference to a custom view XML layout through the `app:itemViewId` property. The file must contain one and only one view element which extends `CompoundButton`
   - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
 
 ## Buttons
 
 - Expose a list of `ButtonViewModel` objects in your ViewModel (1)   
-- Define a layout file that has one and only one `<Button>` element. This will be the template for all buttons in the list. 
 - Add a `BindableButtonList` to your view and wire up:
   - A reference to your button list through the `app:buttons` property
-  - (Optional) A reference to your view through the `app:buttonViewId` property 
-  - (Optional) A reference to a click listener using the `onButtonClicked` property. However
+  - (Optionally) A reference to a custom Button XML view through the `app:buttonViewId` property 
+  - (Optionally) A reference to a click listener using the `onButtonClicked` property. However
     the most common approach would probably be wiring individual click listeners using the `onClick`
     event of the individual `ButtonViewModel`-classes.
     
