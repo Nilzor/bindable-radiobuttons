@@ -51,14 +51,14 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     private fun reinflateViews() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)
-        buttonViewId?.let { viewId ->
-            for (buttonVm in buttons ?: emptyList()) {
-                val buttonView = inflater.inflate(viewId, this, false) as Button
-                buttonView.text = buttonVm.title
-                buttonView.tag = buttonVm
-                buttonView.setOnClickListener(::onClick)
-                this.addView(buttonView)
-            }
+        for (buttonVm in buttons ?: emptyList()) {
+            val buttonView = buttonViewId?.let { viewId ->
+                inflater.inflate(viewId, this, false) as Button
+            } ?: Button(context)
+            buttonView.text = buttonVm.title
+            buttonView.tag = buttonVm
+            buttonView.setOnClickListener(::onClick)
+            this.addView(buttonView)
         }
     }
 }
