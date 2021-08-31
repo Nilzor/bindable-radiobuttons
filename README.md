@@ -32,13 +32,33 @@ implementation 'com.github.nilzor:bindable-radiobuttons:1.0.0'
 
 # Usage
 
+## Radio Buttons
+
+- Expose a list of `RadioButtonViewModel` objects in your ViewModel 
+- Define a layout file that has one and only one `<RadioButton>` element.
+- Add a `BindableRadioButtonList` to your view and wire up:
+  - A reference to your button list through the `app:buttons` property
+  - (Optional) A reference to your view through the `app:itemViewId` property in order to customize the look of the buttons 
+  - (Optional) A one- or two-way binding to a viewmodel-property using the `app:selectedItem` property. 
+    The field must be of type `TitledElement`, or `ObservableField<TitledElement>` if you want to listen 
+    to or notify of changes to the checked states.
+
+## CheckBoxes / ToggleButtons
+
+- Expose a list of `CheckBoxViewModel` objects in your ViewModel
+- Define a layout file that has one and only one `<CheckBox>` or `<ToggleButton>` element.
+- Add a `BindableCheckBoxList` to your view and wire up:
+  - A reference to your checkbox list through the `app:checkboxes` property
+  - (Optional) A reference to your view through the `app:itemViewId` property in order to customize the look of the check boxes
+  - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
+
 ## Buttons
 
 - Expose a list of `ButtonViewModel` objects in your ViewModel (1)   
 - Define a layout file that has one and only one `<Button>` element. This will be the template for all buttons in the list. 
 - Add a `BindableButtonList` to your view and wire up:
-  - A reference to your view through the `app:buttonViewId` property 
   - A reference to your button list through the `app:buttons` property
+  - (Optional) A reference to your view through the `app:buttonViewId` property 
   - (Optional) A reference to a click listener using the `onButtonClicked` property. However
     the most common approach would probably be wiring individual click listeners using the `onClick`
     event of the individual `ButtonViewModel`-classes.
@@ -48,25 +68,13 @@ Example: See [activity_main.xml](https://github.com/Nilzor/bindable-radiobuttons
 (1) If you don't want to use the provided `ButtonViewModel`, you can create your own button ViewModel extending `ButtonViewModelInterface`.
  Same goes for `CheckboxViewModelInterface` for CheckBox and `TitledElement` for RadioButton. 
 
-## Radio Buttons
+# Examples
 
-- Expose a list of `RadioButtonViewModel` objects in your ViewModel 
-- Define a layout file that has one and only one `<RadioButton>` element.
-- Add a `BindableRadioButtonList` to your view and wire up:
-  - A reference to your view through the `app:itemViewId` property 
-  - A reference to your button list through the `app:buttons` property
-  - (Optional) A one- or two-way binding to a viewmodel-property using the `app:selectedItem` property. 
-    The field must be of type `TitledElement`, or `ObservableField<TitledElement>` if you want to listen 
-    to or notify of changes to the checked states.
-   
-## CheckBoxes / ToggleButtons
+The project has two modules: The library and an example app named `sample`. In the sample module you'll find
+a fully functioning example. See especially these two files:
 
-- Expose a list of `CheckBoxViewModel` objects in your ViewModel
-- Define a layout file that has one and only one `<CheckBox>` or `<ToggleButton>` element.
-- Add a `BindableCheckBoxList` to your view and wire up:
-  - A reference to your view through the `app:itemViewId` property 
-  - A reference to your checkbox list through the `app:checkboxes` property
-  - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
+- [activity_main.xml](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/res/layout/activity_main.xml)
+- [MainActivityViewModel](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/java/com/nilsenlabs/bindableradiobuttons/sample/MainActivityViewModel.kt)
 
 # This library is opinionated
 
