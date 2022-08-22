@@ -27,42 +27,24 @@
             app:onButtonClicked="@{viewModel::onButtonClicked}"
             />
 
-        <androidx.cardview.widget.CardView
-            android:layout_margin="4dp"
-            android:elevation="4dp"
-            android:layout_width="match_parent"
+        <com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:itemViewId="@layout/my_radio"
+            app:selectedItem="@={viewModel.selectedRadioButton}"
+            app:buttons="@{viewModel.radioButtons}"
+        />
 
-            <com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp"
-                app:itemViewId="@layout/my_radio"
-                app:selectedItem="@={viewModel.selectedRadioButton}"
-                app:buttons="@{viewModel.radioButtons}"
-                />
-
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
-            android:layout_margin="4dp"
-            android:elevation="4dp"
-            android:layout_width="match_parent"
+        <com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
-
-            <com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="8dp"
-                app:itemViewId="@{viewModel.checkBoxButtonView}"
-                app:checkboxes="@{viewModel.checkboxes}"
-                />
-
-        </androidx.cardview.widget.CardView>
+            android:orientation="vertical"
+            android:padding="8dp"
+            app:itemViewId="@{viewModel.checkBoxButtonView}"
+            app:checkboxes="@{viewModel.checkboxes}"
+        />
 
     </LinearLayout>
 </layout>

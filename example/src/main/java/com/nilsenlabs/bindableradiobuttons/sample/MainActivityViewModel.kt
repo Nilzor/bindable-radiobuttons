@@ -2,10 +2,11 @@ package com.nilsenlabs.bindableradiobuttons.sample
 
 import android.util.Log
 import androidx.databinding.*
-import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
+import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModelInterface
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
+import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModelInterface
 
 
 class MainActivityViewModel : BaseObservable() {
@@ -34,9 +35,9 @@ class MainActivityViewModel : BaseObservable() {
 
     val checkBoxButtonView = ObservableInt(R.layout.my_checkbox)
 
-    val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
+    val selectedRadioButton = ObservableField<RadioButtonViewModelInterface>(radioButtons[2])
 
-    fun onButtonClicked(viewModel: ButtonViewModel) {
+    fun onButtonClicked(viewModel: ButtonViewModelInterface) {
         Log.d(TAG, "Button clicked: ${viewModel.title}")
     }
 
