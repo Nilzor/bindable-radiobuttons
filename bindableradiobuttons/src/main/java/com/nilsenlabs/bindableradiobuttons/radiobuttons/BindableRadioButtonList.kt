@@ -7,7 +7,6 @@ import android.widget.RadioButton
 import android.widget.RadioGroup
 import androidx.annotation.IntegerRes
 import com.nilsenlabs.bindableradiobuttons.Consts
-import com.nilsenlabs.bindableradiobuttons.TitledElement
 
 class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGroup(context, attrs) {
     @IntegerRes
@@ -22,13 +21,13 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
         if (viewId != 0) itemViewId = viewId
     }
 
-    var buttons: List<TitledElement>? = null
+    var buttons: List<RadioButtonViewModelInterface>? = null
         set(value) {
             field = value
             reinflateViews()
         }
 
-    var selectedItem: TitledElement? = null
+    var selectedItem: RadioButtonViewModelInterface? = null
         set(value) {
             field = value
             findViewWithTag<RadioButton>(selectedItem)?.let { viewToSelect ->
@@ -49,7 +48,7 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             if (viewModel == selectedItem) view.isChecked = true
             // Support two-way databinding
             view.setOnCheckedChangeListener { buttonView, isChecked -> 
-                if (isChecked) selectedItem = buttonView.tag as TitledElement
+                if (isChecked) selectedItem = buttonView.tag as RadioButtonViewModelInterface
             }
             this.addView(view)
         }
