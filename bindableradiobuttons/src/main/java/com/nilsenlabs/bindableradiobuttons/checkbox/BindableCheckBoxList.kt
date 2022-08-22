@@ -19,7 +19,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             reinflateViews()
         }
 
-    var checkboxes: List<CheckBoxViewModel>? = null
+    var checkboxes: List<CheckBoxViewModelInterface>? = null
         set(newVal) {
             field = newVal
             reinflateViews()
@@ -49,7 +49,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             view.tag = viewModel
 
             view.setOnCheckedChangeListener { clickedView, isChecked ->
-                (clickedView.tag as CheckBoxViewModel).isChecked.set(isChecked)
+                (clickedView.tag as CheckBoxViewModelInterface).isChecked.set(isChecked)
             }
             // Support two way databinding
             viewModel.isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {

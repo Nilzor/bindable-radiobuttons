@@ -23,14 +23,14 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     }
 
     fun interface ButtonClickListener {
-        fun onButtonClicked(buttonViewModel: ButtonViewModel)
+        fun onButtonClicked(buttonViewModel: ButtonViewModelInterface)
     }
 
     fun interface ClickListener {
         fun onClicked()
     }
 
-    var buttons: List<ButtonViewModel>? = null
+    var buttons: List<ButtonViewModelInterface>? = null
         set(value) {
             field = value
             reinflateViews()
@@ -43,7 +43,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
     var onButtonClicked: ButtonClickListener? = null
 
     private fun onClick(view: View) {
-        val vm = view.tag as ButtonViewModel
+        val vm = view.tag as ButtonViewModelInterface
         onButtonClicked?.onButtonClicked(vm)
         vm.onClick?.onClicked()
     }
