@@ -56,7 +56,7 @@ class MainActivityViewModel : BaseObservable() {
         // Example illustrating how we can listen for changes in checked state on the checkboxes
         checkboxes.get(0).isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                Log.d(TAG, "Checkbox 'One' changed state to checked? " + (sender as ObservableBoolean).get())
+                Log.d(TAG, "Checkbox 'Alpha' changed state to checked? " + (sender as ObservableBoolean).get())
             }
         })
     }

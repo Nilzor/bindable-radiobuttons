@@ -4,12 +4,13 @@ import androidx.databinding.BindingAdapter
 import androidx.databinding.InverseBindingAdapter
 import androidx.databinding.InverseBindingListener
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList
+import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModelInterface
 
 object Adapters {
     //https://developer.android.com/reference/android/databinding/InverseBindingAdapter
     @JvmStatic
     @InverseBindingAdapter(attribute = "app:selectedItem", event = "app:selectedItemAttrChanged")
-    fun selectedItem(brb: BindableRadioButtonList) : TitledElement? {
+    fun selectedItem(brb: BindableRadioButtonList) : RadioButtonViewModelInterface? {
         return brb.selectedItem
     }
 
