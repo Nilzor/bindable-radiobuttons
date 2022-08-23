@@ -14,5 +14,5 @@ open class CheckBoxViewModel @JvmOverloads constructor(
     isChecked: Boolean = false
 ): CheckBoxViewModelInterface {
     override val isChecked = ObservableBoolean(isChecked)
-    override fun toString() = "$title - checked: $isChecked"
+    override fun toString() = "$title - checked: ${isChecked.get()}"
 }
