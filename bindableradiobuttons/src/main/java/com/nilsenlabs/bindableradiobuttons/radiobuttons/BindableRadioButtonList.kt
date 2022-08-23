@@ -45,9 +45,7 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
         for (viewModel in buttons ?: emptyList()) {
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as RadioButton
-            } ?: RadioButton(context).also {
-                it.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
-            }
+            } ?: RadioButton(context)
             // Set initial bound properties
             view.text = viewModel.title
             view.tag = viewModel
