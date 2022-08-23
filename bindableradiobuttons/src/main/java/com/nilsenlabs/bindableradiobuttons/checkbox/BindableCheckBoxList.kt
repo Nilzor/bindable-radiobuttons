@@ -7,19 +7,20 @@ import android.widget.CheckBox
 import android.widget.CompoundButton
 import android.widget.LinearLayout
 import android.widget.ToggleButton
-import androidx.annotation.IntegerRes
+import androidx.annotation.LayoutRes
 import androidx.databinding.Observable
 import com.nilsenlabs.bindableradiobuttons.Consts
+import com.nilsenlabs.bindableradiobuttons.DesignTimeDataGenerator
 
 class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
-    @IntegerRes
+    @LayoutRes
     var itemViewId: Int? = null
         set(value) {
             field = value
             reinflateViews()
         }
 
-    var checkboxes: List<CheckBoxViewModel>? = null
+    var checkboxes: List<CheckBoxViewModelInterface>? = null
         set(newVal) {
             field = newVal
             reinflateViews()
@@ -27,14 +28,17 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
 
     init {
         val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "itemViewId", 0)
-        if (viewId != 0) itemViewId = viewId
+        if (viewId != 0 && viewId != DesignTimeDataGenerator.getDesignTimeNullValue(attrs)) {
+            itemViewId = viewId
+        }
+        checkboxes = DesignTimeDataGenerator.generate(attrs) { CheckBoxViewModel(it) }
     }
 
     private fun reinflateViews() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)
         for (viewModel in checkboxes ?: emptyList()) {
-            val view = itemViewId?.let { viewId ->
+            val view: CompoundButton = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as CompoundButton
             } ?: CheckBox(context)
             // Set bound properties
@@ -49,7 +53,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             view.tag = viewModel
 
             view.setOnCheckedChangeListener { clickedView, isChecked ->
-                (clickedView.tag as CheckBoxViewModel).isChecked.set(isChecked)
+                (clickedView.tag as CheckBoxViewModelInterface).isChecked.set(isChecked)
             }
             // Support two way databinding
             viewModel.isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {

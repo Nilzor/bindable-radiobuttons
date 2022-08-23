@@ -2,10 +2,11 @@ package com.nilsenlabs.bindableradiobuttons.sample
 
 import android.util.Log
 import androidx.databinding.*
-import com.nilsenlabs.bindableradiobuttons.TitledElement
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
+import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModelInterface
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
+import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModelInterface
 
 
 class MainActivityViewModel : BaseObservable() {
@@ -34,9 +35,9 @@ class MainActivityViewModel : BaseObservable() {
 
     val checkBoxButtonView = ObservableInt(R.layout.my_checkbox)
 
-    val selectedRadioButton = ObservableField<TitledElement>(radioButtons[2])
+    val selectedRadioButton = ObservableField<RadioButtonViewModelInterface>(radioButtons[2])
 
-    fun onButtonClicked(viewModel: ButtonViewModel) {
+    fun onButtonClicked(viewModel: ButtonViewModelInterface) {
         Log.d(TAG, "Button clicked: ${viewModel.title}")
     }
 
@@ -55,7 +56,7 @@ class MainActivityViewModel : BaseObservable() {
         // Example illustrating how we can listen for changes in checked state on the checkboxes
         checkboxes.get(0).isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
             override fun onPropertyChanged(sender: Observable?, propertyId: Int) {
-                Log.d(TAG, "Checkbox 'One' changed state to checked? " + (sender as ObservableBoolean).get())
+                Log.d(TAG, "Checkbox 'Alpha' changed state to checked? " + (sender as ObservableBoolean).get())
             }
         })
     }

@@ -34,18 +34,19 @@ implementation 'com.github.nilzor:bindable-radiobuttons:'1.1.0'
 
 ## Radio Buttons
 
-- Expose a list of `RadioButtonViewModel` objects in your ViewModel 
-- Add a `BindableRadioButtonList` to your view and wire up:
+- Expose a `List` of objects of type or subtype of `RadioButtonViewModel` in your view model class. 
+- Add a `<com.nilsenlabs.bindableradiobuttons.radiobuttons.BindableRadioButtonList>` view to your XML and wire up:
   - A reference to your button list through the `app:buttons` property
   - (Optionally) Reference a custom view through the `app:itemViewId` property. The layout XML file must contain a single `<RadioButton>` view element
   - (Optionally) A one- or two-way binding to a viewmodel-property using the `app:selectedItem` property. 
     The field must be of type `TitledElement`, or `ObservableField<TitledElement>` if you want to listen 
     to or notify of changes to the checked states.
+  - (Optionally) `tools:itemCount="2"` to get layout preview of 2 items in the Android Studio Designer
 
 ## CheckBoxes / ToggleButtons / Switch / SwitchCompat
 
 - Expose a list of `CheckBoxViewModel` objects in your ViewModel
-- Add a `BindableCheckBoxList` to your view and wire up:
+- Add a `com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList` to your view and wire up:
   - A reference to your checkbox list through the `app:checkboxes` property
   - (Optional) A reference to a custom view XML layout through the `app:itemViewId` property. The file must contain one and only one view element which extends `CompoundButton`
   - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
@@ -53,7 +54,7 @@ implementation 'com.github.nilzor:bindable-radiobuttons:'1.1.0'
 ## Buttons
 
 - Expose a list of `ButtonViewModel` objects in your ViewModel (1)   
-- Add a `BindableButtonList` to your view and wire up:
+- Add a `com.nilsenlabs.bindableradiobuttons.buttons.BindableButtonList` to your view and wire up:
   - A reference to your button list through the `app:buttons` property
   - (Optionally) A reference to a custom Button XML view through the `app:buttonViewId` property 
   - (Optionally) A reference to a click listener using the `onButtonClicked` property. However
@@ -63,7 +64,7 @@ implementation 'com.github.nilzor:bindable-radiobuttons:'1.1.0'
 Example: See [activity_main.xml](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/res/layout/activity_main.xml#L21-L28) and [MainActivityViewModel](https://github.com/Nilzor/bindable-radiobuttons/blob/main/example/src/main/java/com/nilsenlabs/bindableradiobuttons/sample/MainActivityViewModel.kt#L16-L20) 
  
 (1) If you don't want to use the provided `ButtonViewModel`, you can create your own button ViewModel extending `ButtonViewModelInterface`.
- Same goes for `CheckboxViewModelInterface` for CheckBox and `TitledElement` for RadioButton. 
+ Same goes for `CheckboxViewModelInterface` for CheckBox and `RadioButtonViewModelInterface` for RadioButton. 
 
 # Examples
 

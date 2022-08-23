@@ -16,4 +16,5 @@ local.properties
 .idea/compiler.xml
 /.idea/misc.xml
 /.idea/runConfigurations.xml
+/.idea/gradle.xml
 nogit/
