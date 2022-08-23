@@ -24,6 +24,8 @@
             android:orientation="horizontal"
             app:buttonViewId="@layout/my_button"
             app:buttons="@{viewModel.buttons}"
+            tools:itemCount="2"
+            tools:itemPrefix="Button"
             app:onButtonClicked="@{viewModel::onButtonClicked}"
             />
 
@@ -35,7 +37,8 @@
             app:itemViewId="@layout/my_radio"
             app:selectedItem="@={viewModel.selectedRadioButton}"
             app:buttons="@{viewModel.radioButtons}"
-        />
+            tools:itemCount="2"
+            tools:itemPrefix="Radio" />
 
         <com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList
             android:layout_width="wrap_content"
@@ -44,7 +47,8 @@
             android:padding="8dp"
             app:itemViewId="@{viewModel.checkBoxButtonView}"
             app:checkboxes="@{viewModel.checkboxes}"
+            tools:itemCount="2"
+            tools:itemPrefix="CheckBox"
         />
-
     </LinearLayout>
 </layout>

@@ -5,21 +5,17 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import androidx.annotation.IntegerRes
+import androidx.annotation.LayoutRes
 import com.nilsenlabs.bindableradiobuttons.Consts
+import com.nilsenlabs.bindableradiobuttons.DesignTimeDataGenerator
 
 class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGroup(context, attrs) {
-    @IntegerRes
+    @LayoutRes
     var itemViewId: Int? = null
         set(value) {
             field = value
             reinflateViews()
         }
-
-    init {
-        val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "itemViewId", 0)
-        if (viewId != 0) itemViewId = viewId
-    }
 
     var buttons: List<RadioButtonViewModelInterface>? = null
         set(value) {
@@ -34,14 +30,24 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
                 viewToSelect.isChecked = true
             }
         }
-    
+
+    init {
+        val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "itemViewId", 0)
+        if (viewId != 0 && viewId != DesignTimeDataGenerator.getDesignTimeNullValue(attrs)) {
+            itemViewId = viewId
+        }
+        buttons = DesignTimeDataGenerator.generate(attrs) { RadioButtonViewModel(it) }
+    }
+
     private fun reinflateViews() {
         removeAllViews()
         val inflater = LayoutInflater.from(context)
         for (viewModel in buttons ?: emptyList()) {
             val view = itemViewId?.let { viewId ->
                 inflater.inflate(viewId, this, false) as RadioButton
-            } ?: RadioButton(context)
+            } ?: RadioButton(context).also {
+                it.layoutParams = LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.WRAP_CONTENT)
+            }
             // Set initial bound properties
             view.text = viewModel.title
             view.tag = viewModel
