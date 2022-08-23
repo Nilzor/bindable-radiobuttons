@@ -47,6 +47,7 @@
             android:padding="8dp"
             app:itemViewId="@{viewModel.checkBoxButtonView}"
             app:checkboxes="@{viewModel.checkboxes}"
+            app:onCheckedChanged="@{viewModel.onCheckedChanged}"
             tools:itemCount="2"
             tools:itemPrefix="CheckBox"
         />

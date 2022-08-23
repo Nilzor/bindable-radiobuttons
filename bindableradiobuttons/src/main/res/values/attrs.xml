@@ -11,8 +11,9 @@
         <attr name="itemViewId" format="reference"/>
     </declare-styleable>
 
-    <declare-styleable name="BindableCheckBoxList">
+    <declare-styleable name="com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList">
         <attr name="itemViewId"/>
         <attr name="checkboxes" format="string"/>
+        <attr name="onCheckedChanged" format="string"/>
     </declare-styleable>
 </resources>

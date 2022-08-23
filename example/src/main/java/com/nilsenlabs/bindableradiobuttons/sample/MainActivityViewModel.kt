@@ -4,6 +4,7 @@ import android.util.Log
 import androidx.databinding.*
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.buttons.ButtonViewModelInterface
+import com.nilsenlabs.bindableradiobuttons.checkbox.BindableCheckBoxList
 import com.nilsenlabs.bindableradiobuttons.checkbox.CheckBoxViewModel
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModel
 import com.nilsenlabs.bindableradiobuttons.radiobuttons.RadioButtonViewModelInterface
@@ -36,6 +37,10 @@ class MainActivityViewModel : BaseObservable() {
     val checkBoxButtonView = ObservableInt(R.layout.my_checkbox)
 
     val selectedRadioButton = ObservableField<RadioButtonViewModelInterface>(radioButtons[2])
+
+    val onCheckedChanged = BindableCheckBoxList.CheckedChangeListener { model ->
+        Log.d(TAG, "Check changed through list of checkboxes: $model")
+    }
 
     fun onButtonClicked(viewModel: ButtonViewModelInterface) {
         Log.d(TAG, "Button clicked: ${viewModel.title}")

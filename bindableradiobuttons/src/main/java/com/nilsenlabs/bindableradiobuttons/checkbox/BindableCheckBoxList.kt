@@ -26,6 +26,16 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             reinflateViews()
         }
 
+    /**
+     * Event fired when any of the buttons in the list is clicked.
+     * The ViewModel of the clicked button is passed as parameter to the event.
+     */
+    var onCheckedChanged: CheckedChangeListener? = null
+
+    fun interface CheckedChangeListener {
+        fun checkboxChecked(checkbox: CheckBoxViewModelInterface)
+    }
+
     init {
         val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "itemViewId", 0)
         if (viewId != 0 && viewId != DesignTimeDataGenerator.getDesignTimeNullValue(attrs)) {
@@ -53,7 +63,10 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
             view.tag = viewModel
 
             view.setOnCheckedChangeListener { clickedView, isChecked ->
-                (clickedView.tag as CheckBoxViewModelInterface).isChecked.set(isChecked)
+                (clickedView.tag as? CheckBoxViewModelInterface)?.let { viewModel ->
+                    viewModel.isChecked.set(isChecked)
+                    onCheckedChanged?.checkboxChecked(viewModel)
+                }
             }
             // Support two way databinding
             viewModel.isChecked.addOnPropertyChangedCallback(object : Observable.OnPropertyChangedCallback() {
