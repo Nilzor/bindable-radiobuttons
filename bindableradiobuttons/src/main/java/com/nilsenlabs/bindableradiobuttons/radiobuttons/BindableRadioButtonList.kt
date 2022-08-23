@@ -49,6 +49,7 @@ class BindableRadioButtonList(context: Context, attrs: AttributeSet) : RadioGrou
             // Set initial bound properties
             view.text = viewModel.title
             view.tag = viewModel
+            view.isEnabled = viewModel.isEnabled
             if (viewModel == selectedItem) view.isChecked = true
             // Support two-way databinding
             view.setOnCheckedChangeListener { buttonView, isChecked -> 

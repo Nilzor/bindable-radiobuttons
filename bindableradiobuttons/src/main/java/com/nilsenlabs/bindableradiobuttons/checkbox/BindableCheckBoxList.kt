@@ -61,6 +61,7 @@ class BindableCheckBoxList(context: Context, attrs: AttributeSet) : LinearLayout
 
             view.isChecked = viewModel.isChecked.get()
             view.tag = viewModel
+            view.isEnabled = viewModel.isEnabled
 
             view.setOnCheckedChangeListener { clickedView, isChecked ->
                 (clickedView.tag as? CheckBoxViewModelInterface)?.let { viewModel ->

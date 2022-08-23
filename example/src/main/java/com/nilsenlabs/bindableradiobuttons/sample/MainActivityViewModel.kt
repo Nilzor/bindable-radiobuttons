@@ -16,21 +16,22 @@ class MainActivityViewModel : BaseObservable() {
     }
 
     val buttons = listOf(
-        ButtonViewModel("Invert check", this::invertCheckboxes),
-        ButtonViewModel("Next radio", this::selectNextRadioButton),
-        ButtonViewModel("Toggle checkbox type", this::toggleCheckBoxType)
+        ButtonViewModel("Invert check", true, this::invertCheckboxes),
+        ButtonViewModel("Next radio", true, this::selectNextRadioButton),
+        ButtonViewModel("Toggle checkbox type", true, this::toggleCheckBoxType),
+        ButtonViewModel("D", false),
     )
 
     val radioButtons = listOf(
         RadioButtonViewModel("One"),
-        RadioButtonViewModel("Two"),
+        RadioButtonViewModel("Two", isEnabled = false),
         RadioButtonViewModel("Three")
     )
 
     val checkboxes = listOf(
         CheckBoxViewModel("Alpha"),
-        CheckBoxViewModel("Bravo"),
-        CheckBoxViewModel("Charlie", true),
+        CheckBoxViewModel("Bravo", isEnabled = false),
+        CheckBoxViewModel("Charlie", isChecked = true),
         CheckBoxViewModel("Delta")
     )
 

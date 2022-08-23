@@ -60,6 +60,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
             buttonView.text = buttonVm.title
             buttonView.tag = buttonVm
             buttonView.setOnClickListener(::onClick)
+            buttonView.isEnabled = buttonVm.isEnabled
             this.addView(buttonView)
         }
     }
