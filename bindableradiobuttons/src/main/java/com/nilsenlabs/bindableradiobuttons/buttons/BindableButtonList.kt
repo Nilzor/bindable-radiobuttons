@@ -26,7 +26,7 @@ class BindableButtonList(context: Context, attrs: AttributeSet) : LinearLayout(c
 
     init {
         val viewId = attrs.getAttributeResourceValue(Consts.AppXmlNamespace, "buttonViewId", 0)
-        if (viewId != 0) buttonViewId = viewId
+        if (viewId != 0 && viewId != DesignTimeDataGenerator.getDesignTimeNullValue(attrs)) buttonViewId = viewId
         buttons = DesignTimeDataGenerator.generate(attrs) { ButtonViewModel(it) }
     }
 
