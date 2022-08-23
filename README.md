@@ -27,7 +27,7 @@ allprojects {
 2. In your application module
 
 ```
-implementation 'com.github.nilzor:bindable-radiobuttons:'1.1.0'
+implementation 'com.github.nilzor:bindable-radiobuttons:'1.2.1'
 ```
 
 # Usage
@@ -50,6 +50,8 @@ implementation 'com.github.nilzor:bindable-radiobuttons:'1.1.0'
   - A reference to your checkbox list through the `app:checkboxes` property
   - (Optional) A reference to a custom view XML layout through the `app:itemViewId` property. The file must contain one and only one view element which extends `CompoundButton`
   - Use the `isChecked: ObservableBoolean` fields of the ViewModel if you need to react to changes.
+  - (Optional) Use `app:onCheckedChanged` on the `<BindableCheckBoxList>` to listen for changes. 
+        Signature in the ViewModel: `val checkedChanged = BindableCheckBoxList.CheckedChangeListener { viewModel -> }`
 
 ## Buttons
 
